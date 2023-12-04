@@ -14,12 +14,15 @@ import java.util.Date;
 import java.util.List;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.ss.util.RegionUtil;
 
 /**
  *
@@ -107,6 +110,7 @@ public class Excel {
         try {
             Workbook workbook = new HSSFWorkbook(); // HSSFWorkbook for Excel 97-2003 format
             Sheet sheet = workbook.createSheet("TH");
+            
             // Create header row
             Row headerRow = sheet.createRow(0);
             sheet.setColumnWidth(0, 256 * 4); // STT 3 character
@@ -117,13 +121,28 @@ public class Excel {
             headerFont.setBold(true);
             CellStyle cellStyleBold = workbook.createCellStyle();
             cellStyleBold.setFont(headerFont);
+            // Create a cell style with borders
+            cellStyleBold.setBorderBottom(BorderStyle.THIN);
+            cellStyleBold.setBorderTop(BorderStyle.THIN);
+            cellStyleBold.setBorderRight(BorderStyle.THIN);
+            cellStyleBold.setBorderLeft(BorderStyle.THIN);
 
             CellStyle cellStyleBoldWrap = workbook.createCellStyle();
             cellStyleBoldWrap.setFont(headerFont);
             cellStyleBoldWrap.setWrapText(true);
+            // Create a cell style with borders
+            cellStyleBoldWrap.setBorderBottom(BorderStyle.THIN);
+            cellStyleBoldWrap.setBorderTop(BorderStyle.THIN);
+            cellStyleBoldWrap.setBorderRight(BorderStyle.THIN);
+            cellStyleBoldWrap.setBorderLeft(BorderStyle.THIN);
 
             CellStyle cellStyleWrap = workbook.createCellStyle();
             cellStyleWrap.setWrapText(true);
+            // Create a cell style with borders
+            cellStyleWrap.setBorderBottom(BorderStyle.THIN);
+            cellStyleWrap.setBorderTop(BorderStyle.THIN);
+            cellStyleWrap.setBorderRight(BorderStyle.THIN);
+            cellStyleWrap.setBorderLeft(BorderStyle.THIN);
             
             Object[] dataColums = (Object[]) data.get(0);
             
@@ -140,7 +159,7 @@ public class Excel {
 
             for (int i = 1; i < data.size(); i++) {
                 Object[] item = (Object[]) data.get(i);
-                Row row = sheet.createRow(i + 1);
+                Row row = sheet.createRow(i);
                 for (int j = 0; j < dataColums.length; j++) {
                     Cell cell = row.createCell(j);
                     if (j == 1 && item[0].toString().equals("0")) //Phong
@@ -153,6 +172,15 @@ public class Excel {
                     cell.setCellValue(item[j] != null ? item[j].toString() : "");
                 }
             }
+            
+            int startRow = 0;
+            int endRow = data.size() - 1;
+            int startCol = 0;
+            int endCol = dataColums.length - 1;
+            RegionUtil.setBorderBottom(BorderStyle.THIN, new CellRangeAddress(startRow, endRow, startCol, endCol), sheet);
+            RegionUtil.setBorderTop(BorderStyle.THIN, new CellRangeAddress(startRow, endRow, startCol, endCol), sheet);
+            RegionUtil.setBorderRight(BorderStyle.THIN, new CellRangeAddress(startRow, endRow, startCol, endCol), sheet);
+            RegionUtil.setBorderLeft(BorderStyle.THIN, new CellRangeAddress(startRow, endRow, startCol, endCol), sheet);
 
             try (FileOutputStream fileOut = new FileOutputStream(filePath)) {
                 workbook.write(fileOut);
