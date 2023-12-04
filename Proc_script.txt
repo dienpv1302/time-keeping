@@ -1,0 +1,757 @@
+DROP TABLE TSACH.ZZZ_DPV_CBNV CASCADE CONSTRAINTS;
+
+CREATE TABLE TSACH.ZZZ_DPV_CBNV
+(
+  STT   INTEGER,
+  STT1  INTEGER,
+  MNV   VARCHAR2(10 BYTE),
+  HT    VARCHAR2(100 BYTE)
+)
+TABLESPACE TSBNV
+RESULT_CACHE (MODE DEFAULT)
+PCTUSED    40
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            FREELISTS        1
+            FREELIST GROUPS  1
+            BUFFER_POOL      DEFAULT
+            FLASH_CACHE      DEFAULT
+            CELL_FLASH_CACHE DEFAULT
+           )
+LOGGING 
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+MONITORING;
+
+
+DROP TABLE TSACH.ZZZ_DPV_CBNV_CT CASCADE CONSTRAINTS;
+
+CREATE TABLE TSACH.ZZZ_DPV_CBNV_CT
+(
+  MNV     INTEGER,
+  NGAY    INTEGER,
+  GIO     INTEGER,
+  IN_OUT  VARCHAR2(2000 BYTE)
+)
+TABLESPACE TSBNV
+RESULT_CACHE (MODE DEFAULT)
+PCTUSED    40
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            FREELISTS        1
+            FREELIST GROUPS  1
+            BUFFER_POOL      DEFAULT
+            FLASH_CACHE      DEFAULT
+            CELL_FLASH_CACHE DEFAULT
+           )
+LOGGING 
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+MONITORING;
+
+
+DROP TABLE TSACH.ZZZ_DPV_CBNV_CT_FILTER CASCADE CONSTRAINTS;
+
+CREATE TABLE TSACH.ZZZ_DPV_CBNV_CT_FILTER
+(
+  MNV   INTEGER,
+  NGAY  INTEGER,
+  GIO1  NUMBER,
+  IO1   VARCHAR2(200 BYTE),
+  GIO2  NUMBER,
+  IO2   VARCHAR2(200 BYTE)
+)
+TABLESPACE TSBNV
+RESULT_CACHE (MODE DEFAULT)
+PCTUSED    40
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            FREELISTS        1
+            FREELIST GROUPS  1
+            BUFFER_POOL      DEFAULT
+            FLASH_CACHE      DEFAULT
+            CELL_FLASH_CACHE DEFAULT
+           )
+LOGGING 
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+MONITORING;
+
+
+DROP TABLE TSACH.ZZZ_DPV_CBNV_CT_HIS CASCADE CONSTRAINTS;
+
+CREATE TABLE TSACH.ZZZ_DPV_CBNV_CT_HIS
+(
+  MNV     INTEGER,
+  NGAY    INTEGER,
+  GIO     INTEGER,
+  IN_OUT  VARCHAR2(2000 BYTE)
+)
+TABLESPACE TSBNV
+RESULT_CACHE (MODE DEFAULT)
+PCTUSED    40
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            FREELISTS        1
+            FREELIST GROUPS  1
+            BUFFER_POOL      DEFAULT
+            FLASH_CACHE      DEFAULT
+            CELL_FLASH_CACHE DEFAULT
+           )
+LOGGING 
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+MONITORING;
+
+
+DROP TABLE TSACH.ZZZ_DPV_CBNV_TH CASCADE CONSTRAINTS;
+
+CREATE TABLE TSACH.ZZZ_DPV_CBNV_TH
+(
+  MNV         INTEGER,
+  "20231127"  VARCHAR2(100 BYTE),
+  "20231128"  VARCHAR2(100 BYTE),
+  "20231129"  VARCHAR2(100 BYTE),
+  "20231130"  VARCHAR2(100 BYTE)
+)
+TABLESPACE TSBNV
+RESULT_CACHE (MODE DEFAULT)
+PCTUSED    40
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            FREELISTS        1
+            FREELIST GROUPS  1
+            BUFFER_POOL      DEFAULT
+            FLASH_CACHE      DEFAULT
+            CELL_FLASH_CACHE DEFAULT
+           )
+LOGGING 
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+MONITORING;
+
+
+DROP TABLE TSACH.ZZZ_DPV_CBNV_TH_BK CASCADE CONSTRAINTS;
+
+CREATE TABLE TSACH.ZZZ_DPV_CBNV_TH_BK
+(
+  MNV         INTEGER,
+  "20231011"  VARCHAR2(100 BYTE),
+  "20231012"  VARCHAR2(100 BYTE),
+  "20231013"  VARCHAR2(100 BYTE),
+  "20231014"  VARCHAR2(100 BYTE),
+  "20231015"  VARCHAR2(100 BYTE)
+)
+TABLESPACE TSBNV
+RESULT_CACHE (MODE DEFAULT)
+PCTUSED    40
+PCTFREE    10
+INITRANS   1
+MAXTRANS   255
+STORAGE    (
+            INITIAL          64K
+            NEXT             1M
+            MINEXTENTS       1
+            MAXEXTENTS       UNLIMITED
+            PCTINCREASE      0
+            FREELISTS        1
+            FREELIST GROUPS  1
+            BUFFER_POOL      DEFAULT
+            FLASH_CACHE      DEFAULT
+            CELL_FLASH_CACHE DEFAULT
+           )
+LOGGING 
+NOCOMPRESS 
+NOCACHE
+NOPARALLEL
+MONITORING;
+
+DROP TYPE TSACH.ZZZ_DPV_CBNV_CT_TYPE;
+
+CREATE OR REPLACE TYPE TSACH.ZZZ_DPV_CBNV_CT_TYPE AS OBJECT 
+(
+  MNV     INTEGER,
+  NGAY    INTEGER,
+  GIO     INTEGER,
+  IN_OUT  VARCHAR2(2000 BYTE)
+)
+/
+
+DROP TYPE TSACH.ZZZ_DPV_CBNV_CT_TYPE_TABLE;
+
+CREATE OR REPLACE TYPE TSACH.ZZZ_DPV_CBNV_CT_TYPE_TABLE AS TABLE OF ZZZ_DPV_CBNV_CT_TYPE
+/
+
+
+
+
+DROP PROCEDURE TSACH.ZZZ_CBNV_CONG;
+
+CREATE OR REPLACE PROCEDURE TSACH.ZZZ_CBNV_CONG
+AS
+  sql_text nvarchar2(4000) := 'INSERT INTO ZZZ_DPV_CBNV_CT_FILTER
+   SELECT A1.mnv,
+          A1.ngay,
+          --CASE WHEN A1.GIO < 120000 THEN A1.GIO ELSE NULL END 
+          A1.GIO AS gio1,
+          A1.IN_OUT AS IO1,
+          --CASE WHEN A2.GIO > 125959 THEN A2.GIO ELSE NULL END 
+          A2.GIO AS gio2,
+          A2.IN_OUT AS IO2
+     FROM (  SELECT A.MNV,
+                    A.ngay,
+                    A.gio,
+                    A.IN_OUT
+               FROM ZZZ_DPV_CBNV_CT A
+              WHERE (MNV, ngay, gio) IN (  SELECT B.MNV,
+                                                          B.ngay,
+                                                          MIN (B.gio)
+                                                     FROM ZZZ_DPV_CBNV_CT B
+                                                 GROUP BY B.MNV, B.ngay)
+           GROUP BY A.MNV,
+                    A.ngay,
+                    A.gio,
+                    A.IN_OUT) A1
+          INNER JOIN
+          (  SELECT A.MNV,
+                    A.ngay,
+                    A.gio,
+                    A.IN_OUT
+               FROM ZZZ_DPV_CBNV_CT A
+              WHERE (MNV, ngay, gio) IN (  SELECT B.MNV,
+                                                          B.ngay,
+                                                          MAX (B.gio)
+                                                     FROM ZZZ_DPV_CBNV_CT B
+                                                 GROUP BY B.MNV, B.ngay)
+           GROUP BY A.MNV,
+                    A.ngay,
+                    A.gio,
+                    A.IN_OUT) A2
+             ON A1.MNV = A2.MNV AND A1.ngay = A2.ngay';
+     
+     sql_create_data1 nvarchar2(4000) := 'MERGE INTO (SELECT MNV, "DPV_DATE" AS XN FROM ZZZ_DPV_CBNV_TH) tgt
+     USING (SELECT A.MNV, A.ngay, A.Gio1, A.gio2, A.IO1, A.IO2 from ZZZ_DPV_CBNV_CT_FILTER A where A.ngay=DPV_DATE) src
+        ON (tgt.MNV = src.MNV)
+WHEN MATCHED
+THEN
+   UPDATE SET
+      tgt.XN = 
+            CASE
+               --WHEN gio1 IS NULL THEN ''?''
+               WHEN gio1 > 100059 THEN ''Den Muon-'' || TO_CHAR (gio1) ||''-''|| IO1
+               ELSE ''X''
+            END
+         || ''/''
+         || CASE
+               --WHEN gio2 IS NULL THEN ''?''
+               WHEN gio2 < 153000 THEN ''Ve Som-'' || TO_CHAR (gio2) ||''-''|| IO2
+               ELSE ''X''
+            END';
+            
+    sql_create_data2 nvarchar2(4000) := 'UPDATE ZZZ_DPV_CBNV_TH
+   SET "DPV_DATE" = ''X''
+ WHERE "DPV_DATE" = ''X/X''';
+     sql_create_data3 nvarchar2(4000) := 'UPDATE ZZZ_DPV_CBNV_TH
+   SET "DPV_DATE" = ''?''
+ WHERE "DPV_DATE" IS NULL';
+     sql_create_data4 nvarchar2(4000) := 'UPDATE ZZZ_DPV_CBNV_TH
+       SET "DPV_DATE" = ''?-''||replace(replace("DPV_DATE",''X/'',''''),''/X'','''')
+     WHERE "DPV_DATE" <> ''?'' and "DPV_DATE" <> ''X''';
+    ngay date;
+    diff_date integer;
+    start_date integer;
+    end_date integer;
+    vTmp integer;
+BEGIN
+    select min(ngay), max(ngay) into start_date,end_date from ZZZ_DPV_CBNV_CT;
+    
+    select TO_DATE(TO_CHAR(end_date), 'yyyymmdd') - TO_DATE(TO_CHAR(start_date), 'yyyymmdd') into diff_date from dual;
+
+    EXECUTE IMMEDIATE 'truncate table ZZZ_DPV_CBNV_CT_FILTER';
+    EXECUTE IMMEDIATE 'drop table ZZZ_DPV_CBNV_TH';
+    EXECUTE IMMEDIATE 'create table ZZZ_DPV_CBNV_TH(MNV integer)';
+    
+    if(diff_date < 0) then return; end if; 
+    
+    
+    FOR Lcntr IN 0..diff_date
+    LOOP
+       ngay := TO_DATE(TO_CHAR(start_date), 'yyyymmdd')+Lcntr;
+       
+       EXECUTE IMMEDIATE 'alter table ZZZ_DPV_CBNV_TH add ("'|| TO_CHAR(ngay,'yyyymmdd') ||'" varchar2(100))';
+    END LOOP;
+    
+    EXECUTE IMMEDIATE 'insert into ZZZ_DPV_CBNV_TH(MNV) select MNV from ZZZ_DPV_CBNV where MNV <>0 order by STT,STT1';
+    
+    EXECUTE IMMEDIATE sql_text;
+    
+    FOR Lcntr IN 0..diff_date
+    LOOP
+       ngay := TO_DATE(TO_CHAR(start_date), 'yyyymmdd')+Lcntr;
+       
+       if TO_NUMBER(TO_CHAR(ngay, 'D')) not in (1,7) then
+       
+        EXECUTE IMMEDIATE REPLACE(sql_create_data1,'DPV_DATE',TO_CHAR(ngay,'yyyymmdd') );
+        EXECUTE IMMEDIATE REPLACE(sql_create_data2,'DPV_DATE',TO_CHAR(ngay,'yyyymmdd') );
+        EXECUTE IMMEDIATE REPLACE(sql_create_data3,'DPV_DATE',TO_CHAR(ngay,'yyyymmdd') );
+        EXECUTE IMMEDIATE REPLACE(sql_create_data4,'DPV_DATE',TO_CHAR(ngay,'yyyymmdd') );
+       
+       end if;       
+    
+    END LOOP;
+    
+    select count(*) into vTmp
+    from ZZZ_DPV_CBNV_CT_HIS
+    where ngay between start_date and end_date;
+    
+    if vTmp = 0 then
+        insert into ZZZ_DPV_CBNV_CT_HIS
+        select * from ZZZ_DPV_CBNV_CT;
+    end if;
+    
+    commit;
+    
+    DBMS_OUTPUT.put_line('select A.STT1,A.HT,B.* 
+    from ZZZ_DPV_CBNV A left join ZZZ_DPV_CBNV_TH B on to_number(A.MNV) = B.mnv
+    where stt <> 16 and stt <> 17
+    order by stt,stt1;');
+END;
+/
+
+DROP PROCEDURE TSACH.ZZZ_CBNV_CONG_APP;
+
+CREATE OR REPLACE PROCEDURE TSACH.ZZZ_CBNV_CONG_APP(p_cursor out SYS_REFCURSOR)
+AS
+  sql_text nvarchar2(4000) := 'INSERT INTO ZZZ_DPV_CBNV_CT_FILTER
+   SELECT A1.mnv,
+          A1.ngay,
+          --CASE WHEN A1.GIO < 120000 THEN A1.GIO ELSE NULL END 
+          A1.GIO AS gio1,
+          A1.IN_OUT AS IO1,
+          --CASE WHEN A2.GIO > 125959 THEN A2.GIO ELSE NULL END 
+          A2.GIO AS gio2,
+          A2.IN_OUT AS IO2
+     FROM (  SELECT A.MNV,
+                    A.ngay,
+                    A.gio,
+                    A.IN_OUT
+               FROM ZZZ_DPV_CBNV_CT A
+              WHERE (MNV, ngay, gio) IN (  SELECT B.MNV,
+                                                          B.ngay,
+                                                          MIN (B.gio)
+                                                     FROM ZZZ_DPV_CBNV_CT B
+                                                 GROUP BY B.MNV, B.ngay)
+           GROUP BY A.MNV,
+                    A.ngay,
+                    A.gio,
+                    A.IN_OUT) A1
+          INNER JOIN
+          (  SELECT A.MNV,
+                    A.ngay,
+                    A.gio,
+                    A.IN_OUT
+               FROM ZZZ_DPV_CBNV_CT A
+              WHERE (MNV, ngay, gio) IN (  SELECT B.MNV,
+                                                          B.ngay,
+                                                          MAX (B.gio)
+                                                     FROM ZZZ_DPV_CBNV_CT B
+                                                 GROUP BY B.MNV, B.ngay)
+           GROUP BY A.MNV,
+                    A.ngay,
+                    A.gio,
+                    A.IN_OUT) A2
+             ON A1.MNV = A2.MNV AND A1.ngay = A2.ngay';
+     
+     sql_create_data1 nvarchar2(4000) := 'MERGE INTO (SELECT MNV, "DPV_DATE" AS XN FROM ZZZ_DPV_CBNV_TH) tgt
+     USING (SELECT A.MNV, A.ngay, A.Gio1, A.gio2, A.IO1, A.IO2 from ZZZ_DPV_CBNV_CT_FILTER A where A.ngay=DPV_DATE) src
+        ON (tgt.MNV = src.MNV)
+WHEN MATCHED
+THEN
+   UPDATE SET
+      tgt.XN = 
+            CASE
+               --WHEN gio1 IS NULL THEN ''?''
+               WHEN gio1 > 100059 THEN ''Den Muon-'' || TO_CHAR (gio1) ||''-''|| IO1
+               ELSE ''X''
+            END
+         || ''/''
+         || CASE
+               --WHEN gio2 IS NULL THEN ''?''
+               WHEN gio2 < 153000 THEN ''Ve Som-'' || TO_CHAR (gio2) ||''-''|| IO2
+               ELSE ''X''
+            END';
+            
+    sql_create_data2 nvarchar2(4000) := 'UPDATE ZZZ_DPV_CBNV_TH
+   SET "DPV_DATE" = ''X''
+ WHERE "DPV_DATE" = ''X/X''';
+     sql_create_data3 nvarchar2(4000) := 'UPDATE ZZZ_DPV_CBNV_TH
+   SET "DPV_DATE" = ''?''
+ WHERE "DPV_DATE" IS NULL';
+     sql_create_data4 nvarchar2(4000) := 'UPDATE ZZZ_DPV_CBNV_TH
+       SET "DPV_DATE" = ''?-''||replace(replace("DPV_DATE",''X/'',''''),''/X'','''')
+     WHERE "DPV_DATE" <> ''?'' and "DPV_DATE" <> ''X''';
+    ngay date;
+    diff_date integer;
+    start_date integer;
+    end_date integer;
+    vTmp integer;
+BEGIN
+    select min(ngay), max(ngay) into start_date,end_date from ZZZ_DPV_CBNV_CT;
+    
+    select TO_DATE(TO_CHAR(end_date), 'yyyymmdd') - TO_DATE(TO_CHAR(start_date), 'yyyymmdd') into diff_date from dual;
+
+    EXECUTE IMMEDIATE 'truncate table ZZZ_DPV_CBNV_CT_FILTER';
+    EXECUTE IMMEDIATE 'drop table ZZZ_DPV_CBNV_TH';
+    EXECUTE IMMEDIATE 'create table ZZZ_DPV_CBNV_TH(MNV integer)';
+    
+    if(diff_date < 0) then return; end if; 
+    
+    
+    FOR Lcntr IN 0..diff_date
+    LOOP
+       ngay := TO_DATE(TO_CHAR(start_date), 'yyyymmdd')+Lcntr;
+       
+       EXECUTE IMMEDIATE 'alter table ZZZ_DPV_CBNV_TH add ("'|| TO_CHAR(ngay,'yyyymmdd') ||'" varchar2(100))';
+    END LOOP;
+    
+    EXECUTE IMMEDIATE 'insert into ZZZ_DPV_CBNV_TH(MNV) select MNV from ZZZ_DPV_CBNV where MNV <>0 order by STT,STT1';
+    
+    EXECUTE IMMEDIATE sql_text;
+    
+    FOR Lcntr IN 0..diff_date
+    LOOP
+       ngay := TO_DATE(TO_CHAR(start_date), 'yyyymmdd')+Lcntr;
+       
+       if TO_NUMBER(TO_CHAR(ngay, 'D')) not in (1,7) then
+       
+        EXECUTE IMMEDIATE REPLACE(sql_create_data1,'DPV_DATE',TO_CHAR(ngay,'yyyymmdd') );
+        EXECUTE IMMEDIATE REPLACE(sql_create_data2,'DPV_DATE',TO_CHAR(ngay,'yyyymmdd') );
+        EXECUTE IMMEDIATE REPLACE(sql_create_data3,'DPV_DATE',TO_CHAR(ngay,'yyyymmdd') );
+        EXECUTE IMMEDIATE REPLACE(sql_create_data4,'DPV_DATE',TO_CHAR(ngay,'yyyymmdd') );
+       
+       end if;       
+    
+    END LOOP;
+    
+    select count(*) into vTmp
+    from ZZZ_DPV_CBNV_CT_HIS
+    where ngay between start_date and end_date;
+    
+    if vTmp = 0 then
+        insert into ZZZ_DPV_CBNV_CT_HIS
+        select * from ZZZ_DPV_CBNV_CT;
+    end if;
+    
+    commit;
+    
+    open p_cursor for
+    select A.STT1,A.HT,B.* 
+    from ZZZ_DPV_CBNV A left join ZZZ_DPV_CBNV_TH B on to_number(A.MNV) = B.mnv
+    order by stt,stt1;
+    
+END;
+/
+
+DROP PROCEDURE TSACH.ZZZ_CBNV_CONG_DPV;
+
+CREATE OR REPLACE PROCEDURE TSACH.ZZZ_CBNV_CONG_DPV
+AS
+  sql_text nvarchar2(4000) := 'INSERT INTO ZZZ_DPV_CBNV_CT_FILTER
+   SELECT A1.mnv,
+          A1.ngay,
+          --CASE WHEN A1.GIO < 120000 THEN A1.GIO ELSE NULL END 
+          A1.GIO AS gio1,
+          A1.IN_OUT AS IO1,
+          --CASE WHEN A2.GIO > 125959 THEN A2.GIO ELSE NULL END 
+          A2.GIO AS gio2,
+          A2.IN_OUT AS IO2
+     FROM (  SELECT A.MNV,
+                    A.ngay,
+                    A.gio,
+                    A.IN_OUT
+               FROM ZZZ_DPV_CBNV_CT A
+              WHERE (MNV, ngay, gio) IN (  SELECT B.MNV,
+                                                          B.ngay,
+                                                          MIN (B.gio)
+                                                     FROM ZZZ_DPV_CBNV_CT B
+                                                 GROUP BY B.MNV, B.ngay)
+           GROUP BY A.MNV,
+                    A.ngay,
+                    A.gio,
+                    A.IN_OUT) A1
+          INNER JOIN
+          (  SELECT A.MNV,
+                    A.ngay,
+                    A.gio,
+                    A.IN_OUT
+               FROM ZZZ_DPV_CBNV_CT A
+              WHERE (MNV, ngay, gio) IN (  SELECT B.MNV,
+                                                          B.ngay,
+                                                          MAX (B.gio)
+                                                     FROM ZZZ_DPV_CBNV_CT B
+                                                 GROUP BY B.MNV, B.ngay)
+           GROUP BY A.MNV,
+                    A.ngay,
+                    A.gio,
+                    A.IN_OUT) A2
+             ON A1.MNV = A2.MNV AND A1.ngay = A2.ngay';
+     
+     sql_create_data1 nvarchar2(4000) := 'MERGE INTO (SELECT MNV, "DPV_DATE" AS XN FROM ZZZ_DPV_CBNV_TH) tgt
+     USING (SELECT A.MNV, A.ngay, A.Gio1, A.gio2, A.IO1, A.IO2 from ZZZ_DPV_CBNV_CT_FILTER A where A.ngay=DPV_DATE) src
+        ON (tgt.MNV = src.MNV)
+WHEN MATCHED
+THEN
+   UPDATE SET
+      tgt.XN = 
+            CASE
+               --WHEN gio1 IS NULL THEN ''?''
+               WHEN gio1 > 83159 THEN ''Den Muon-'' || TO_CHAR (gio1) ||''-''|| IO1
+               ELSE ''X''
+            END
+         || ''/''
+         || CASE
+               --WHEN gio2 IS NULL THEN ''?''
+               WHEN gio2 < 173000 THEN ''Ve Som-'' || TO_CHAR (gio2) ||''-''|| IO2
+               ELSE ''X''
+            END';
+            
+    sql_create_data2 nvarchar2(4000) := 'UPDATE ZZZ_DPV_CBNV_TH
+   SET "DPV_DATE" = ''X''
+ WHERE "DPV_DATE" = ''X/X''';
+     sql_create_data3 nvarchar2(4000) := 'UPDATE ZZZ_DPV_CBNV_TH
+   SET "DPV_DATE" = ''?''
+ WHERE "DPV_DATE" IS NULL';
+     sql_create_data4 nvarchar2(4000) := 'UPDATE ZZZ_DPV_CBNV_TH
+       SET "DPV_DATE" = ''?-''||replace(replace("DPV_DATE",''X/'',''''),''/X'','''')
+     WHERE "DPV_DATE" <> ''?'' and "DPV_DATE" <> ''X''';
+    ngay date;
+    diff_date integer;
+    start_date integer;
+    end_date integer;
+    vTmp integer;
+BEGIN
+    select min(ngay), max(ngay) into start_date,end_date from ZZZ_DPV_CBNV_CT;
+
+    select TO_DATE(TO_CHAR(end_date), 'yyyymmdd') - TO_DATE(TO_CHAR(start_date), 'yyyymmdd') into diff_date from dual;
+
+    EXECUTE IMMEDIATE 'truncate table ZZZ_DPV_CBNV_CT_FILTER';
+    EXECUTE IMMEDIATE 'drop table ZZZ_DPV_CBNV_TH';
+    EXECUTE IMMEDIATE 'create table ZZZ_DPV_CBNV_TH(MNV integer)';
+    
+    if(diff_date < 0) then return; end if; 
+    
+    
+    FOR Lcntr IN 0..diff_date
+    LOOP
+       ngay := TO_DATE(TO_CHAR(start_date), 'yyyymmdd')+Lcntr;
+       
+       EXECUTE IMMEDIATE 'alter table ZZZ_DPV_CBNV_TH add ("'|| TO_CHAR(ngay,'yyyymmdd') ||'" varchar2(100))';
+    END LOOP;
+    
+    EXECUTE IMMEDIATE 'insert into ZZZ_DPV_CBNV_TH(MNV) select MNV from ZZZ_DPV_CBNV where MNV <>0 order by STT,STT1';
+    
+    EXECUTE IMMEDIATE sql_text;
+    
+    FOR Lcntr IN 0..diff_date
+    LOOP
+       ngay := TO_DATE(TO_CHAR(start_date), 'yyyymmdd')+Lcntr;
+       
+       if TO_NUMBER(TO_CHAR(ngay, 'D')) not in (1,7) then
+       
+        EXECUTE IMMEDIATE REPLACE(sql_create_data1,'DPV_DATE',TO_CHAR(ngay,'yyyymmdd') );
+        EXECUTE IMMEDIATE REPLACE(sql_create_data2,'DPV_DATE',TO_CHAR(ngay,'yyyymmdd') );
+        EXECUTE IMMEDIATE REPLACE(sql_create_data3,'DPV_DATE',TO_CHAR(ngay,'yyyymmdd') );
+        EXECUTE IMMEDIATE REPLACE(sql_create_data4,'DPV_DATE',TO_CHAR(ngay,'yyyymmdd') );
+       
+       end if;       
+    
+    END LOOP;
+    
+    select count(*) into vTmp
+    from ZZZ_DPV_CBNV_CT_HIS
+    where ngay between start_date and end_date;
+    
+    if vTmp = 0 then
+        insert into ZZZ_DPV_CBNV_CT_HIS
+        select * from ZZZ_DPV_CBNV_CT;
+    end if;
+    
+    commit;
+    
+    DBMS_OUTPUT.put_line('select A.STT1,A.HT,B.* 
+    from ZZZ_DPV_CBNV A left join ZZZ_DPV_CBNV_TH B on to_number(A.MNV) = B.mnv
+    where stt <> 16 and stt <> 17
+    order by stt,stt1;');
+END;
+/
+
+DROP PROCEDURE TSACH.ZZ_INSERTEMPLOYEES;
+
+CREATE OR REPLACE PROCEDURE TSACH.ZZ_InsertEmployees(
+    p_employee_data IN EmployeeTableType
+) AS
+BEGIN
+    INSERT INTO EmployeeTable (name, age, note)
+    SELECT name, age, note FROM TABLE(CAST(p_employee_data AS EmployeeTableType));
+
+    
+    COMMIT; -- Commit the transaction
+
+--DECLARE
+--    -- Declare a variable of the table type
+--    l_employee_data EmployeeTableType := EmployeeTableType(); -- Initialize an empty table
+--
+--BEGIN
+--    -- Add data to the table variable
+--    l_employee_data.EXTEND; -- Extend the table size
+--    l_employee_data(l_employee_data.LAST) := EmployeeRecordType('John', 25, 'Note 1');
+--
+--    l_employee_data.EXTEND;
+--    l_employee_data(l_employee_data.LAST) := EmployeeRecordType('Alice', 30, 'Note 2');
+--
+--    -- Call the procedure with the table variable
+--    ZZ_InsertEmployees(l_employee_data);
+--    
+--    -- Commit the transaction
+--    COMMIT;
+--    
+--    DBMS_OUTPUT.PUT_LINE('Procedure executed successfully.');
+--END;
+--/
+
+
+
+END ZZ_InsertEmployees;
+/
+
+DROP PROCEDURE TSACH.ZZ_INSERTEMPLOYEESFROMTABLE_V2;
+
+CREATE OR REPLACE PROCEDURE TSACH.zz_InsertEmployeesFromTable_v2(
+    p_employee_cursor IN SYS_REFCURSOR
+) AS
+    v_employee_data EmployeeRecordType;
+BEGIN
+    -- Loop through the cursor and insert data into the EmployeeTable
+    LOOP
+        FETCH p_employee_cursor INTO v_employee_data;
+        EXIT WHEN p_employee_cursor%NOTFOUND;
+
+        -- Insert data into the EmployeeTable
+        INSERT INTO EmployeeTable (name, age, note)
+        VALUES (v_employee_data.name, v_employee_data.age, v_employee_data.note);
+    END LOOP;
+
+    -- Commit the transaction
+    COMMIT;
+    
+    DBMS_OUTPUT.PUT_LINE('Procedure executed successfully.');
+END zz_InsertEmployeesFromTable_v2;
+/
+
+DROP PROCEDURE TSACH.ZZ_INSERTEMPLOYEESFROMTABLE_V3;
+
+CREATE OR REPLACE PROCEDURE TSACH.zz_InsertEmployeesFromTable_v3(
+    p_employee_cursor IN SYS_REFCURSOR
+) AS
+--    TYPE EmployeeRecordType IS RECORD (
+--        name VARCHAR2(50),
+--        age NUMBER,
+--        note VARCHAR2(100)
+--    );
+--
+--    TYPE EmployeeTableType IS TABLE OF EmployeeRecordType;
+
+    v_employee_data EmployeeTableType;
+BEGIN
+    -- Fetch data from the cursor into the nested table
+    FETCH p_employee_cursor BULK COLLECT INTO v_employee_data;
+
+    -- Insert data into the EmployeeTable using BULK COLLECT from the nested table
+--    FORALL i IN 1..v_employee_data.COUNT
+--        INSERT INTO EmployeeTable (name, age, note)
+--        VALUES (v_employee_data(i).name, v_employee_data(i).age, v_employee_data(i).note);
+    INSERT INTO EmployeeTable (name, age, note)
+    SELECT name, age, note FROM TABLE(v_employee_data);
+
+    -- Commit the transaction
+    COMMIT;
+
+    DBMS_OUTPUT.PUT_LINE('Procedure executed successfully.');
+    
+--    DECLARE
+--    -- Declare a cursor variable
+--    l_employee_cursor SYS_REFCURSOR;
+--
+--BEGIN
+--    -- Open the cursor for the ABC table
+--    OPEN l_employee_cursor FOR
+--        SELECT name, age, note FROM zz_EmployeeTable; -- Replace ABC with your actual table name
+--
+--    -- Call the procedure with the cursor variable
+--    zz_InsertEmployeesFromTable_v2(l_employee_cursor);
+--    
+--    -- Close the cursor
+--    CLOSE l_employee_cursor;
+--
+--    DBMS_OUTPUT.PUT_LINE('Procedure executed successfully.');
+--END;
+--/
+EXCEPTION
+    WHEN OTHERS THEN
+        -- Handle exceptions or log the error if needed
+        DBMS_OUTPUT.PUT_LINE('Error: ' || SQLERRM);
+END zz_InsertEmployeesFromTable_v3;
+/
+
+DROP PROCEDURE TSACH.ZZ_INSERT_CBNV_CT;
+
+CREATE OR REPLACE PROCEDURE TSACH.ZZ_INSERT_CBNV_CT(
+    p_data IN ZZZ_DPV_CBNV_CT_TYPE_TABLE
+) AS
+BEGIN
+    INSERT INTO ZZZ_DPV_CBNV_CT (MNV, NGAY, GIO,IN_OUT)
+    SELECT MNV, NGAY, GIO,IN_OUT FROM TABLE(p_data);
+
+
+END;
+/
