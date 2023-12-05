@@ -26,9 +26,11 @@ public class ReadExcelSendEmail {
         //                     3 is export result 
         boolean isTruncate = true, isImport = true, isExport = true;
         Excel excel = new Excel();
-        Database db = new Database();
-
+        Database db = new Database();        
+        Email em = new Email();        
         System.out.println("Beginning " + LocalDateTime.now());
+        //em.testSend_crt();
+        
         Date dnow = Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant());
 
         String url = args[0];
