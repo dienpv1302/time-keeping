@@ -6,9 +6,7 @@ package com.me.read.excel.send.email;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 /**
  *
@@ -23,11 +21,12 @@ public class ReadExcelSendEmail {
         //          arg1 excel file input or output
         //          arg2 mode: 1 is append
         //                     0 is truncate
-        //                     3 is export result 
+        //                     2 is export result 
+        //                     3 is export result persistent 
         boolean isTruncate = true, isImport = true, isExport = true;
         Excel excel = new Excel();
-        Database db = new Database();        
-        Email em = new Email();        
+        Database db = new Database();       
+        //Email em = new Email();        
         System.out.println("Beginning " + LocalDateTime.now());
         //em.testSend_crt();
         
@@ -41,9 +40,14 @@ public class ReadExcelSendEmail {
             isExport = false;
             switch (args[1]) {
                 case "1" -> isTruncate = false;
+                case "2" -> {
+                    isExport = true;
+                    isImport = false;
+                }
                 case "3" -> {
                     isExport = true;
                     isImport = false;
+                    db.isConsistent = true;
                 }
             }
         }
