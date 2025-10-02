@@ -20,16 +20,20 @@ public class Database {
 
     // Set up Oracle database connection
     String jdbcUrl = "jdbc:oracle:thin:@//10.2.254.69:1521/betest";
-    String username = "tsach";
-    String password = "Hanoi123a@";
+    //String username = "zcc";
+    //String password = "1234567890aA@";
+    String username = System.getenv("DB_USER");
+    String password = System.getenv("DB_PASSWORD");
     public boolean isConsistent = false;
-    public void Truncate() {
+    public void BackUpAndTruncate() {
         System.out.println("Start truncate " + LocalDateTime.now());
         try {
             // Establish connection
             try (Connection connection = DriverManager.getConnection(jdbcUrl, username, password)) {
                 try (Statement statement = connection.createStatement()) {
-                    statement.executeUpdate("TRUNCATE TABLE ZZZ_DPV_CBNV_CT");
+                    statement.addBatch("insert into ZCC.ZZZ_DPV_CBNV_CT_HIS select * from zcc.ZZZ_DPV_CBNV_CT");
+                    statement.addBatch("TRUNCATE TABLE ZCC.ZZZ_DPV_CBNV_CT");
+                    statement.executeBatch();
                     System.out.println("Table truncated successfully.");
                 }
             }
@@ -43,7 +47,7 @@ public class Database {
         System.out.println("Start ImportDB " + LocalDateTime.now());
         try (Connection connection = DriverManager.getConnection(jdbcUrl, username, password)) {
             // Create an ArrayDescriptor for EmployeeTableType
-            ArrayDescriptor arrayDescriptor = ArrayDescriptor.createDescriptor("ZZZ_DPV_CBNV_CT_TYPE_TABLE", connection);
+            ArrayDescriptor arrayDescriptor = ArrayDescriptor.createDescriptor("ZCC.ZZZ_DPV_CBNV_CT_TYPE_TABLE", connection);
 
             // Create an OracleConnection to unwrap the connection
             OracleConnection oracleConnection = connection.unwrap(OracleConnection.class);
@@ -51,7 +55,7 @@ public class Database {
             ARRAY arrayData = new ARRAY(arrayDescriptor, oracleConnection, data.toArray());
 
             // Prepare and execute the stored procedure call
-            try (CallableStatement statement = connection.prepareCall("{call ZZ_INSERT_CBNV_CT(?)}")) {
+            try (CallableStatement statement = connection.prepareCall("{call ZCC.ZZ_INSERT_CBNV_CT(?)}")) {
                 statement.setArray(1, arrayData);
                 statement.execute();
                 System.out.println("Data inserted successfully.");
@@ -68,7 +72,7 @@ public class Database {
         // Code
         // Establish connection
         try (Connection connection = DriverManager.getConnection(jdbcUrl, username, password)) {
-            try (CallableStatement callableStatement = connection.prepareCall("{call ZZZ_CBNV_CONG_APP" + (isConsistent ? "_DPV" : "") + "(?)}")) {
+            try (CallableStatement callableStatement = connection.prepareCall("{call ZCC.ZZZ_CBNV_CONG_APP" + (isConsistent ? "_DPV" : "") + "(?)}")) {
                 // Register the OUT parameter for the result set
                 callableStatement.registerOutParameter(1, oracle.jdbc.OracleTypes.CURSOR);
 

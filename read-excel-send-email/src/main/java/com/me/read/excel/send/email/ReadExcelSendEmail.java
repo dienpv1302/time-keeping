@@ -29,17 +29,28 @@ public class ReadExcelSendEmail {
         //Email em = new Email();        
         System.out.println("Beginning " + LocalDateTime.now());
         //em.testSend_crt();
-        
+        if (args.length == 0) {
+            System.out.println("1 args: normal mode: import file excel and export result" );
+            System.out.println("	  n args:                                           " );
+            System.out.println("		  arg_n-1 excel file input or output               " );
+            System.out.println("		  arg_last mode:         1 is append, only import                        " );
+            System.out.println("					 0 is truncate, only import                      " );
+            System.out.println("					 2 is export result, only export                 " );
+            System.out.println("					 3 is export result persistent, only export      " );
+            return;
+        }
         Date dnow = Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant());
 
         String url = args[0];
         //String url = "D:\\du lieu cham cong 27-30.11.2023.xls";
         var output_url = url.replace(".xls", "_KQ_" + new SimpleDateFormat("yyyyMMddHHmmss").format(dnow) + "_.xls");
         if (args.length > 1) {
-            isImport = true;
+            isImport = false;
             isExport = false;
-            switch (args[1]) {
-                case "1" -> isTruncate = false;
+            isTruncate = false;
+            switch (args[args.length-1]) {
+                case "0" -> {isTruncate = true; isImport = true;}
+                case "1" -> {isTruncate = false; isImport = true;}
                 case "2" -> {
                     isExport = true;
                     isImport = false;
@@ -54,10 +65,13 @@ public class ReadExcelSendEmail {
 
         if (isImport) {
             if (isTruncate) {
-                db.Truncate();
+                db.BackUpAndTruncate();
             }
-
-            db.Import(excel.Import(url));
+           db.Import(excel.Import(url));
+           if(args.length >=3){
+               for(int i = 1; i < args.length-1; i++)
+                   db.Import(excel.Import(args[i]));
+           } 
         }
 
         if (isExport) {
